@@ -8,7 +8,11 @@ OBSでURL参照して表示するためのアナログ時計Webアプリケー�
 - 背景が完全透過（OBSでの合成に最適）
 - レスポンシブ対応（ウィンドウサイズに自動調整）
 - 画面いっぱいに時計を表示
-- シンプルで読みやすいデザイン
+- マテリアルデザイン風のモダンなUI
+  - 影付きの立体的な文字盤
+  - 細かい目盛り（60個）とモダンなフォント
+  - 赤色の秒針で視認性向上
+  - スムーズなアニメーション（ミリ秒単位）
 
 ## 技術スタック
 
@@ -61,6 +65,8 @@ npm run preview
 
 このプロジェクトはGitHub Pagesでのデプロイを想定しています。
 
+**注意**: `vite.config.ts` の `base` オプションはリポジトリ名に合わせて設定されています（`/analog-clock-browser/`）。異なるリポジトリ名を使用する場合は、この値を変更してください。
+
 1. `/docs` ディレクトリをGitにコミット
    ```bash
    git add docs/
@@ -75,6 +81,7 @@ npm run preview
    - Save
 
 3. デプロイが完了すると、URLが表示されます
+   - 例: https://nishina555.github.io/analog-clock-browser/
 
 ## OBSでの使用方法
 
@@ -87,13 +94,15 @@ npm run preview
 
 ```
 analog-clock-browser/
+├── doc/               # プロジェクトドキュメント
+│   └── SOW.md        # 実装仕様書
 ├── docs/              # ビルド成果物（GitHub Pages用）
 ├── src/
 │   ├── main.ts       # エントリーポイント
-│   ├── clock.ts      # 時計の描画ロジック
-│   └── style.css     # スタイル
+│   ├── clock.ts      # 時計の描画ロジック（Canvas API）
+│   └── style.css     # スタイル（透過背景など）
 ├── index.html        # HTMLテンプレート
-├── vite.config.ts    # Vite設定
+├── vite.config.ts    # Vite設定（base path、出力先など）
 ├── tsconfig.json     # TypeScript設定
 └── package.json      # プロジェクト設定
 
